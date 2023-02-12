@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<head>
+    <title>How you Are lucky</title>
+    <link rel="icon" type="image/x-icon" href="hearts--v2.png">
+</head>
+
+<body>
+
+
+    <div class="login-box">
+        <h2>Login</h2>
+        <script>
+            function myFunction() {
+
+
+                let uname = document.getElementById('un').value
+
+                let pswd = document.getElementById('ps').value
+
+
+
+                fetch("https://sheetdb.io/api/v1/4gkloapx76xrf", {
+                    method: "GET",
+                }).then(
+                    response => response.json()
+
+                ).then(
+                    res => {
+                        const db = res
+
+                        count = db.length
+                        let find = false;
+                        for (i = 0; i < count; i++) {
+
+                            if (uname == db[i].email && pswd == db[i].psw) {
+                                window.location.href = "web2.html";
+                                find = true
+                                alert("login successfully");
+                                break
+                            }
+
+                        }
+
+                        if (!find) {
+                            alert('goto hell');
+                        }
+
+
+                    }
+                )
+
+
+
+
+            }
+        </script>
+        <form class="myForm">
+            <div class="user-box">
+                <input type="text" name="" required="" id="un">
+                <label>username</label>
+            </div>
+            <div class="user-box">
+                <input type="text" name="" required="" id="ps">
+                <label>password</label>
+            </div>
+            <div class="button-form">
+                <a id="submit" onclick=myFunction()>
+                    submit
+                </a>
+                <div id="register">Don't have an account ?
+                    <a href="http://127.0.0.1:5501/web.html">Register</a>
+                </div>
+            </div>
+        </form>
+
+        <link rel="stylesheet" href="web1.css">
+
+    </div>
+</body>
+
+</html>
